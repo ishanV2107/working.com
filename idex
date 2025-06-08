@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To My Bestfriend Vaishnavi 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+    }
+
+    .album-container {
+      perspective: 2000px;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .book {
+      width: 85vw;
+      height: 85vh;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .page {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: #fff;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+      transition: transform 1s ease;
+      transform-origin: left center;
+      cursor: pointer;
+      border-radius: 15px;
+      backface-visibility: hidden;
+    }
+
+    .page:nth-child(even) {
+      z-index: 10;
+    }
+
+    .page.flipped {
+      transform: rotateY(-180deg);
+      z-index: 1 !important;
+    }
+
+    audio {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      z-index: 999;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      background: red;
+      border-radius: 50%;
+      animation: floatUp 12s linear infinite;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .balloon::before {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: white;
+      transform: translateX(-50%);
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -100px;
+        opacity: 0;
+        transform: translateX(0);
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 110vh;
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+    }
+
+    .pop {
+      animation: pop 0.3s ease forwards;
+    }
+
+    @keyframes pop {
+      to {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+
+    .title {
+      position: absolute;
+      top: 30px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      color: #ffb6c1;
+      z-index: 20;
+      text-shadow: 0 0 10px #ff69b4;
+    }
+
+    .wish {
+      position: absolute;
+      top: 100px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.2em;
+      z-index: 20;
+      color: #ffffffcc;
+      padding: 0 20px;
+      line-height: 1.6em;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title">To My Magical Bestie Vaishnavi 🌟</div>
+  <div class="wish">
+    You are not just my friend, you are my soul of everything💫<br>
+    Thank you for filling my life with love, joy, and infinite laughter.<br>
+    This album is a glimpse of our beautiful bond. Love you always Mosquito 💖
+  </div>
+
+  <div class="album-container">
+    <div class="book" id="book">
+      <!-- 10 Image Pages -->
+      <div class="page" style="background-image: url('v1.jpg');"></div>
+      <div class="page" style="background-image: url('v2.jpg');"></div>
+      <div class="page" style="background-image: url('v3.jpg');"></div>
+      <div class="page" style="background-image: url('v4.jpg');"></div>
+      <div class="page" style="background-image: url('v5.jpg');"></div>
+      <div class="page" style="background-image: url('v6.jpg');"></div>
+      <div class="page" style="background-image: url('v7.jpg');"></div>
+      <div class="page" style="background-image: url('v8.jpg');"></div>
+      <div class="page" style="background-image: url('v9.jpg');"></div>
+      <div class="page" style="background-image: url('v10.jpg');"></div>
+
+      <!-- Video Page -->
+      <div class="page">
+        <video src="video.mp4" autoplay loop muted controls></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio autoplay loop controls>
+    <source src="song.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Balloon Generator -->
+  <script>
+    // Page flip logic
+    const pages = document.querySelectorAll(".page");
+    pages.forEach((page, i) => {
+      page.addEventListener("click", () => {
+        page.classList.toggle("flipped");
+      });
+    });
+
+    // Floating balloons
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      const colors = ['#ff4e50', '#ff6ec7', '#ffd166', '#ff6699', '#e60073'];
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 90 + 'vw';
+      balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+      balloon.style.animationDuration = (8 + Math.random() * 5) + 's';
+
+      balloon.onclick = () => {
+        balloon.classList.add('pop');
+        setTimeout(() => balloon.remove(), 300);
+      };
+
+      document.body.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 14000);
+    }
+
+    setInterval(createBalloon, 900);
+  </script>
+
+</body>
+</html>
